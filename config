@@ -3,7 +3,6 @@ ngx_module_name=ngx_http_image_resizer_module
 ngx_module_srcs="$ngx_addon_dir/ngx_http_image_resizer_module.c"
 ngx_module_incs="/usr/include/GraphicsMagick"
 ngx_module_libs="-lGraphicsMagickWand -lGraphicsMagick -llcms -ltiff -lfreetype -ljasper -ljpeg -lwebp -lpng12 -lz -lm -lpthread"
-ngx_module_deps="ngx_config.h ngx_core.h ngx_http.h error.h ngx_regex.h magick/api.h wand/wand_api.h wand/magick_wand.h"
 
 . auto/module
 

@@ -777,15 +777,13 @@ ngx_http_image_resizer_adapt_size(
 		double required_ratio = (double)required_width / (double)required_height;
 		if (required_ratio < src_ratio)
 		{
-	    	//adapt_size->width = required_width;
-	    	//adapt_size->height = (double)required_width / src_ratio;
-			adapt_size->width = 400;
-			adapt_size->height = 400;
+	    	adapt_size->width = required_width;
+	    	adapt_size->height = (double)required_width / (double)src_ratio;
 		}
 		else
 		{
 	    	adapt_size->height = required_height;
-	    	adapt_size->width = (double)required_height * src_ratio;
+	    	adapt_size->width = (double)required_height * (double)src_ratio;
 		}
     } else {
         return NGX_ERROR;

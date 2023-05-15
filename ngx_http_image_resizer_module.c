@@ -826,8 +826,8 @@ ngx_http_image_resizer_image_resize(
                 break;
             }
 
-		ngx_uint_t width = resize_size->width;
-    		ngx_uint_t height = resize_size->height;
+		ngx_uint_t width = resize_size.width;
+    		ngx_uint_t height = resize_size.height;
 		
             white_bg = NewPixelWand();
             if (!white_bg) break;

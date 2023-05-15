@@ -801,8 +801,6 @@ ngx_http_image_resizer_image_resize(
         size_t *len)
 {
     ngx_http_image_resizer_size_t resize_size = { 0, 0 };
-    ngx_uint_t width = param->size.width;
-    ngx_uint_t height = param->size.height;
     unsigned long x, y;
     unsigned char *blob = NULL;
     ngx_buf_t *img_buf = NULL;
@@ -828,7 +826,7 @@ ngx_http_image_resizer_image_resize(
                 break;
             }
 
-			ngx_uint_t width = resize_size->width;
+		ngx_uint_t width = resize_size->width;
     		ngx_uint_t height = resize_size->height;
 		
             white_bg = NewPixelWand();

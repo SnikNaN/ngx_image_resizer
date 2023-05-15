@@ -766,12 +766,24 @@ ngx_http_image_resizer_adapt_size(
             adapt_size->height = required_height;
             adapt_size->width = (double)src_width *((double)required_height /(double)src_height);
         }
-    } else if(*operation == '*' || *operation == 'X') {
+    } else if(*operation == '*') {
         adapt_size->height = required_height;
         adapt_size->width = (double)src_width*((double)required_height/(double)src_height);
     } else if (*operation == 'y') {
         adapt_size->height = required_height;
         adapt_size->width = required_width;
+    } else if (*operation == 'X') {
+	double prop = (double)src_width / (double)src_height;
+	if ((double)required_height * prop > required_width)
+	{
+	    adapt_size->width = required_width;
+	    adapt_size->height = (double)required_width / prop;
+	}
+	else
+	{
+	    adapt_size->height = required_height;
+	    adapt_size->width = (double)required_height * prop;
+	}
     } else {
         return NGX_ERROR;
     }

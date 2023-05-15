@@ -785,6 +785,8 @@ ngx_http_image_resizer_adapt_size(
 	    	adapt_size->height = required_height;
 	    	adapt_size->width = (double)required_height * (double)src_ratio;
 		}
+		required_size->width = adapt_size->width;
+		required_size->height = adapt_size->height;
     } else {
         return NGX_ERROR;
     }
@@ -838,7 +840,7 @@ ngx_http_image_resizer_image_resize(
             status = MagickScaleImage(mw, resize_size.width, resize_size.height);
             if (MagickPass != status) break;
 
-            if (*(param->operation.data) == 'x') {
+            if (*(param->operation.data) == 'x' || *(param->operation.data) == 'X' ) {
                 status = MagickScaleImage(mw, resize_size.width, resize_size.height);
                 if (MagickPass != status) break;
 
@@ -847,8 +849,7 @@ ngx_http_image_resizer_image_resize(
                 status = MagickExtentImage(mw, width, height, x, y);
                 if (MagickPass != status) break;
 
-            }  else if (*(param->operation.data) == '*' ||
-                    *(param->operation.data) == 'X' ) {
+            }  else if (*(param->operation.data) == '*') {
                 status = MagickScaleImage(mw, resize_size.width, resize_size.height);
                 if (MagickPass != status) break;
 

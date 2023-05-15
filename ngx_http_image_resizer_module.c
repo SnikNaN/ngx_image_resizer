@@ -779,8 +779,8 @@ ngx_http_image_resizer_adapt_size(
 		{
 	    	//adapt_size->width = required_width;
 	    	//adapt_size->height = (double)required_width / src_ratio;
-			adapt_size_width = 400;
-			adapt_size_height = 400;
+			adapt_size->width = 400;
+			adapt_size->height = 400;
 		}
 		else
 		{
